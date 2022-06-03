@@ -1,7 +1,11 @@
 part of 'homeCubit.dart';
 
-@immutable
-abstract class HomeState {}
+abstract class HomeState extends Equatable {
+  const HomeState();
+
+  @override
+  List<Object> get props => [];
+}
 
 class HomeInitial extends HomeState {}
 
@@ -11,7 +15,10 @@ class HomeLoadingMoreState extends HomeState {}
 
 class HomeLoadedState extends HomeState {
   late List<Products> dataProducts;
-  HomeLoadedState({required this.dataProducts});
+  HomeLoadedState({
+    required this.dataProducts,
+  });
+  @override
   List<Object> get props => [dataProducts];
 }
 

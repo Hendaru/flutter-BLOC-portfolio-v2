@@ -8,14 +8,14 @@ createInstance() async {
       baseUrl: Api.BASE_URL, connectTimeout: 10000, receiveTimeout: 10000);
 
   dioInstance = Dio(option);
-  dioInstance.interceptors.add(PrettyDioLogger(
-      requestHeader: true,
-      requestBody: true,
-      responseBody: true,
-      responseHeader: false,
-      error: true,
-      compact: true,
-      maxWidth: 90));
+  // dioInstance.interceptors.add(PrettyDioLogger(
+  //     requestHeader: true,
+  //     requestBody: true,
+  //     responseBody: true,
+  //     responseHeader: false,
+  //     error: true,
+  //     compact: true,
+  //     maxWidth: 90));
 }
 
 Future<Dio> dio() async {

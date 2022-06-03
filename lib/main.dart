@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<HomeCubit>(
-      create: (context) => HomeCubit(),
+      create: (context) => HomeCubit()..getDataProducts(),
       child: MaterialApp(
         title: 'Lime Commerce',
         theme: ThemeData(
