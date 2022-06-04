@@ -12,6 +12,7 @@ class HomeCubit extends Cubit<HomeState> {
   List<Products> temporaryDataProducts = [];
   int limit = 2;
   int skip = 0;
+  bool fristSkip = false;
 
   Future getDataProducts() async {
     try {
@@ -37,8 +38,9 @@ class HomeCubit extends Cubit<HomeState> {
     try {
       emit(HomeLoadingMoreState());
       await Future.delayed(const Duration(milliseconds: 500));
-      skip = skip += 1;
+
       ApiService apiServices = ApiService();
+      fristSkip ? skip += 2 : fristSkip = !fristSkip;
       Response? response =
           await apiServices.loadProduct(limit.toString(), skip.toString());
       if (response?.statusCode == 200) {

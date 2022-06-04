@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sizer/sizer.dart';
 
 import 'router/appRoute.dart';
 import 'bloc/homeCubit/homeCubit.dart';
@@ -17,14 +18,16 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider<HomeCubit>(
       create: (context) => HomeCubit()..getDataProducts(),
-      child: MaterialApp(
-        title: 'Lime Commerce',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
-        initialRoute: RouteName.home,
-        onGenerateRoute: AppRouter().onGenerateRoute,
-      ),
+      child: Sizer(builder: (context, orientation, deviceType) {
+        return MaterialApp(
+          title: 'Lime Commerce',
+          theme: ThemeData(
+            primarySwatch: Colors.blue,
+          ),
+          initialRoute: RouteName.home,
+          onGenerateRoute: AppRouter().onGenerateRoute,
+        );
+      }),
     );
   }
 }
